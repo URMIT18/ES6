@@ -1,0 +1,39 @@
+<html>
+<script>
+    function saveData() {
+        var mydata = {
+            name: "Urmit",
+            mobile: 9426268577,
+            age: 1
+        }
+        var finaldata = JSON.stringify(mydata);
+        localStorage.setItem("user", finaldata);
+        document.getElementById("myid").innerHTML = "Data Saved";
+    }
+
+    function getData() {
+        if (localStorage.getItem("user")) {
+            var a = JSON.parse(localStorage.getItem("user"));
+
+            document.getElementById("myid").innerHTML = "Detail is " + a.name + a.age;
+        } else {
+            document.getElementById("myid").innerHTML = "NO Data";
+        }
+    }
+
+
+
+    function removeData() {
+        localStorage.removeItem("user");
+        document.getElementById("myid").innerHTML = "Data Removed";
+    }
+</script>
+
+<body>
+    <div id="myid"></div>
+    <button onclick="saveData()">Save</button>
+    <button onclick="getData()">Get</button>
+    <button onclick="removeData()">Remove</button>
+</body>
+
+</html>
